@@ -121,6 +121,7 @@ function json_get_file( $p_var_name, $p_default = null ) {
 }
 
 function json_isset( $p_var_name ) {
+	global $g_json_message;
 	return (isset($g_json_message->{$p_var_name})) ? true : false;
 }
 
@@ -130,8 +131,12 @@ function json_isset( $p_var_name ) {
  * @param int $p_custom_field_type
  * @return bool
  */
-function json_isset_custom_field( $p_var_name, $p_custom_field_type ) {
-	$t_field_name = 'custom_field_' . $p_var_name;
+function json_isset_custom_field( $p_var_id, $p_var_name, $p_custom_field_type ) {
+	if (json_isset('custom_field_' . $p_var_name)) {
+		$t_field_name = 'custom_field_' . $p_var_name;
+	} else {
+		$t_field_name = 'custom_field_' . $p_var_id;
+	}
 
 	switch ($p_custom_field_type ) {
 		case CUSTOM_FIELD_TYPE_DATE:

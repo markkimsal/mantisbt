@@ -75,7 +75,7 @@ foreach( $t_related_custom_field_ids as $t_id ) {
 	$t_def = custom_field_get_definition( $t_id );
 
 	# Produce an error if the field is required but wasn't posted
-	if ( !json_isset_custom_field( $t_id, $t_def['type'] ) &&
+	if ( !json_isset_custom_field( $t_id, $t_def['name'], $t_def['type'] ) &&
 		( $t_def['require_report'] ||
 			$t_def['type'] == CUSTOM_FIELD_TYPE_ENUM ||
 			$t_def['type'] == CUSTOM_FIELD_TYPE_LIST ||
