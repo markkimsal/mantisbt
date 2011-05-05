@@ -116,3 +116,7 @@ if ($json_action == 'bug_report') {
 if ($json_action == 'list_bugs') {
 	require_once('action_list_bugs.php');
 }
+
+if ($json_action == 'attach_file') {
+	require_once('action_attach_file.php');
+}
