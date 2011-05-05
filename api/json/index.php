@@ -112,3 +112,7 @@ set_error_handler( 'json_error_handler' );
 if ($json_action == 'bug_report') {
 	require_once('action_bug_report.php');
 }
+
+if ($json_action == 'list_bugs') {
+	require_once('action_list_bugs.php');
+}
