@@ -7,13 +7,13 @@ access_ensure_project_level( config_get('report_bug_threshold' ) , $project_id, 
 
 $t_bug_id = json_get_int('bug_id');
 if ($t_bug_id < 1 ) {
-	echo json_encode(array('result'=>'failed'));
+	echo json_encode(array('result'=>'failed', 'reason' => 'no bug id'));
 	json_exit();
 }
 $t_bug_data =  bug_get($t_bug_id);
 
 if ($t_bug_data->id < 1 ) {
-	echo json_encode(array('result'=>'failed'));
+	echo json_encode(array('result'=>'failed', 'reason' => 'load issue failed'));
 	json_exit();
 }
 
@@ -23,7 +23,7 @@ if ( !access_has_project_level(
 		config_get( 'roadmap_update_threshold' ), 
 		$t_bug_data->project_id ) ) {
 
-			echo json_encode(array('result'=>'failed'));
+			echo json_encode(array('result'=>'failed', 'reason'=>'no permission'));
 			json_exit();
 }
 
