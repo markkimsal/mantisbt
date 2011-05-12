@@ -60,13 +60,13 @@ function json_access_denied() {
 }
 
 
-function json_get_string($key) {
+function json_get_string($key, $default='') {
 	global $g_json_message;
 	return (isset($g_json_message->{$key}))? $g_json_message->{$key}: "";
 }
-function json_get_int($key) {
+function json_get_int($key, $default=0) {
 	global $g_json_message;
-	return (isset($g_json_message->{$key}))? (int)$g_json_message->{$key}: 0;
+	return (isset($g_json_message->{$key}))? (int)$g_json_message->{$key}: $default;
 }
 function json_get_bool($key) {
 	global $g_json_message;
